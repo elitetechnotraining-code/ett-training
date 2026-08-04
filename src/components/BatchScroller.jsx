@@ -1,13 +1,5 @@
 const batches = [
-  { course: 'AWS Solutions Architect',                date: 'Aug 12, 2026', time: '7:00 PM IST', seats: 8  },
-  { course: 'SAP S/4HANA — Finance & Controlling',   date: 'Aug 15, 2026', time: '6:30 PM IST', seats: 5  },
-  { course: 'Full-Stack Java — Spring Boot & Angular', date: 'Aug 18, 2026', time: '8:00 PM IST', seats: 12 },
-  { course: 'SAP MM & SD Integration',                date: 'Aug 20, 2026', time: '7:00 PM IST', seats: 6  },
-  { course: 'Apache Spark & Big Data Pipelines',      date: 'Aug 25, 2026', time: '6:00 PM IST', seats: 10 },
-  { course: 'Docker, Kubernetes & CI/CD',             date: 'Sep 01, 2026', time: '8:00 PM IST', seats: 9  },
-  { course: 'Machine Learning with Python',           date: 'Sep 05, 2026', time: '7:30 PM IST', seats: 7  },
-  { course: 'Azure Data Engineering (DP-203)',        date: 'Sep 08, 2026', time: '6:30 PM IST', seats: 11 },
-  { course: 'Python for Professionals',               date: 'Sep 10, 2026', time: '7:00 PM IST', seats: 15 },
+  { course: 'Full-Stack Java — Spring Boot & Angular', date: 'Aug 9, 2026', time: '7:00 PM IST', seats: 12 },
 ]
 
 const scrollStyle = `
