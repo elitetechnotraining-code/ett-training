@@ -1,5 +1,5 @@
 const batches = [
-  { course: 'Full-Stack Java — Spring Boot, Angular & AI', date: 'Aug 9, 2026', time: '7:00 PM IST', seats: 12 },
+  { course: 'Full-Stack Java — Spring Boot, Angular & AI', date: 'Aug 9, 2026', time: '7:00 PM IST' },
 ]
 
 const scrollStyle = `
@@ -52,10 +52,6 @@ export default function BatchScroller() {
                   <span className="text-brand-400 mx-1">|</span>
                   <span className="text-white font-medium">{b.date}</span>
                   <span className="text-brand-300">&nbsp;{b.time}</span>
-                  <span className="text-brand-400 mx-1">|</span>
-                  <span className={`font-semibold ${b.seats <= 6 ? 'text-rose-300' : 'text-emerald-300'}`}>
-                    {b.seats} seats left
-                  </span>
                   <span className="text-brand-500 ml-4 text-xs">✦</span>
                 </span>
               ))}
