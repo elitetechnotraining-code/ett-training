@@ -39,7 +39,6 @@ export default function Hero() {
           {[
             { value: '50+', label: 'Courses' },
             { value: '2,000+', label: 'Graduates' },
-            { value: '95%', label: 'Job Placement' },
           ].map(s => (
             <div key={s.label} className="flex flex-col items-center gap-1">
               <span className="text-3xl font-extrabold text-brand-600">{s.value}</span>
