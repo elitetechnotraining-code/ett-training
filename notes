@@ -1,0 +1,12 @@
+.zprofile is available in SAPDevelop folder and pointing the node js 20.20.
+
+
+# Add to PATH (adds to your zsh profile)
+echo 'export PATH="/usr/local/node/bin:$PATH"' >> ~/.zprofile
+
+# Apply immediately
+source ~/.zprofile
+
+# Verify
+node --version
+npm --version
