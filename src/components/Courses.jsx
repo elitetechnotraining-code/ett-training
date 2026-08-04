@@ -40,17 +40,18 @@ const courses = [
     icon: '⚡',
   },
   {
-    category: 'Web Development',
-    title: 'Full-Stack Java — Spring Boot & Angular',
+    category: 'Web Development & AI',
+    title: 'Full-Stack Java — Spring Boot, Angular & AI',
     description:
-      'Build enterprise-grade web applications from backend to frontend. You will master Java core concepts, design RESTful microservices with Spring Boot, create dynamic UIs with Angular, connect MySQL/PostgreSQL and deploy on AWS or Azure.',
+      'Build enterprise-grade, AI-powered web applications from backend to frontend. Master Java, Spring Boot microservices, Angular UIs, and integrate real-world AI features using Spring AI and OpenAI APIs — deployed on AWS or Azure.',
     highlights: [
       'Core Java & OOP — Collections, Streams, Lambdas',
       'Spring Boot — REST APIs, Spring Security, JPA/Hibernate',
       'Angular — Components, Services, RxJS, Routing',
+      'AI Integration — Spring AI, OpenAI API, Prompt Engineering',
       'Maven, Git, Docker & Cloud Deployment',
     ],
-    duration: '16 weeks',
+    duration: '18 weeks',
     level: 'Beginner',
     icon: '💻',
   },

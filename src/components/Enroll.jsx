@@ -6,7 +6,7 @@ const courses = [
   'SAP S/4HANA — Finance & Controlling',
   'SAP MM & SD Integration',
   'Apache Spark & Big Data Pipelines',
-  'Full-Stack Java — Spring Boot & Angular',
+  'Full-Stack Java — Spring Boot, Angular & AI',
   'Docker, Kubernetes & CI/CD',
   'Machine Learning with Python',
   'Azure Data Engineering (DP-203)',
