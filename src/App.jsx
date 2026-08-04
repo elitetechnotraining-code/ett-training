@@ -3,7 +3,6 @@ import Navbar from './components/Navbar'
 import BatchScroller from './components/BatchScroller'
 import Hero from './components/Hero'
 import Courses from './components/Courses'
-import Trainers from './components/Trainers'
 import Testimonials from './components/Testimonials'
 import Enroll from './components/Enroll'
 import Footer from './components/Footer'
@@ -31,7 +30,6 @@ export default function App() {
       <main>
         <Hero />
         <Courses />
-        <Trainers />
         <Testimonials />
         <Enroll />
       </main>

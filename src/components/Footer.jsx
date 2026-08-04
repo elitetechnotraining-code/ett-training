@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <p className="text-white font-semibold mb-3">Quick Links</p>
           <ul className="space-y-2 text-sm">
-            {['#courses', '#trainers', '#testimonials', '#enroll'].map(href => (
+            {['#courses', '#testimonials', '#enroll'].map(href => (
               <li key={href}>
                 <a href={href} className="hover:text-white transition-colors capitalize">
                   {href.replace('#', '')}

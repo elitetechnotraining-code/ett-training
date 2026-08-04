@@ -3,7 +3,6 @@ import Logo from './Logo'
 
 const links = [
   { label: 'Courses', href: '#courses' },
-  { label: 'Trainers', href: '#trainers' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Enroll', href: '#enroll' },
 ]
