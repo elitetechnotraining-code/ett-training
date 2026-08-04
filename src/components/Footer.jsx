@@ -27,9 +27,9 @@ export default function Footer() {
         <div>
           <p className="text-white font-semibold mb-3">Contact</p>
           <ul className="space-y-2 text-sm">
-            <li>info@etttraining.com</li>
-            <li>+1 (800) 123-4567</li>
-            <li>Mon–Fri, 9am–6pm</li>
+            <li>elitetechnotraining@gmail.com</li>
+            <li>+91 90595 71845</li>
+            <li>Sun–Sat, 24 Hours</li>
           </ul>
         </div>
       </div>
