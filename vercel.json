@@ -2,10 +2,6 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "build": {
-    "env": {
-      "NODE_VERSION": "20.20.0"
-    }
-  },
-  "installCommand": "npm install --legacy-peer-deps"
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run build"
 }
