@@ -27,16 +27,6 @@ export default function BatchScroller() {
       <div className="w-full bg-brand-700 text-white py-2 mt-16">
         <div className="flex items-center gap-2 px-3 sm:px-6 sm:max-w-6xl sm:mx-auto">
 
-          {/* Badge */}
-          <div className="flex-shrink-0">
-            <span className="bg-amber-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap uppercase tracking-wide shadow">
-              🗓 Batches
-            </span>
-          </div>
-
-          {/* Divider */}
-          <div className="flex-shrink-0 w-px h-4 bg-brand-500" />
-
           {/* Scrolling ticker */}
           <div className="flex-1 overflow-hidden relative min-w-0">
             <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-brand-700 to-transparent z-10 pointer-events-none" />
