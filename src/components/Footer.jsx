@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-10 border-t border-gray-800 pt-6 text-center text-xs">
-        <span>&copy; {new Date().getFullYear()} Elite Tech Training. All rights reserved.</span>
+        <span>&copy; {new Date().getFullYear()} Elite Tech Solutions. All rights reserved.</span>
       </div>
     </footer>
   )

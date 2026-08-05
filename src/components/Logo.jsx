@@ -73,8 +73,8 @@ export default function Logo({ size = 40, showText = true }) {
 
       {showText && (
         <div className="flex flex-col leading-none">
-          <span className="font-extrabold text-lg text-brand-700 tracking-tight">Elite Tech</span>
-          <span className="font-semibold text-sm text-green-600 tracking-widest uppercase">Training</span>
+          <span className="font-extrabold text-lg text-brand-700 tracking-tight">Elite Tech Solutions</span>
+          <span className="font-semibold text-sm text-green-600 tracking-widest uppercase">& Training</span>
         </div>
       )}
     </div>

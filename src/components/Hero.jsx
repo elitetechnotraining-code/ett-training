@@ -20,7 +20,7 @@ export default function Hero() {
         </h1>
 
         <p className="max-w-xl text-lg text-gray-500 leading-relaxed">
-          Hands-on courses taught by practitioners at Elite Tech Training. From cloud and data engineering to SAP and full-stack development — build job-ready skills at your own pace.
+          Hands-on courses taught by practitioners at Elite Tech Solutions. From cloud and data engineering to SAP and full-stack development — build job-ready skills at your own pace.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 mt-2">

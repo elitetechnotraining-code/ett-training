@@ -48,7 +48,7 @@ export default function Testimonials() {
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">What Our Graduates Say</h2>
           <p className="mt-3 text-gray-500 text-lg max-w-xl mx-auto">
-            Real stories from professionals who transformed their careers with Elite Tech training.
+            Real stories from professionals who transformed their careers with Elite Tech Solutions.
           </p>
         </div>
 

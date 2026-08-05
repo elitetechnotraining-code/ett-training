@@ -61,7 +61,7 @@ export default function Admin() {
               <Logo size={52} showText={false} />
             </div>
             <h1 className="text-xl font-bold text-gray-900">Admin Access</h1>
-            <p className="text-sm text-gray-500 mt-1">Elite Tech Training</p>
+            <p className="text-sm text-gray-500 mt-1">Elite Tech Solutions</p>
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-sm font-semibold text-gray-700">Password</label>
