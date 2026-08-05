@@ -2,7 +2,7 @@ import Logo from './Logo'
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20 bg-gradient-to-br from-brand-50 via-white to-indigo-50">
+    <section className="pt-10 pb-20 bg-gradient-to-br from-brand-50 via-white to-indigo-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6">
 
         {/* Logo centred in hero */}

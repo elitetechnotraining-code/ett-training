@@ -33,9 +33,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+      <div className="mt-10 border-t border-gray-800 pt-6 text-center text-xs">
         <span>&copy; {new Date().getFullYear()} Elite Tech Training. All rights reserved.</span>
-        <a href="/admin" className="text-gray-600 hover:text-gray-400 transition-colors">Admin Portal</a>
       </div>
     </footer>
   )
