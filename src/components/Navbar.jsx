@@ -25,8 +25,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <a href="/demo"
+            className="ml-2 px-4 py-2 rounded-lg border border-amber-400 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors">
+            Free Demo
+          </a>
           <a href="#enroll"
-            className="ml-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors">
+            className="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors">
             Get Started
           </a>
         </nav>
@@ -48,8 +52,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <a href="/demo" onClick={() => setOpen(false)}
+            className="mt-1 px-4 py-2 rounded-lg border border-amber-400 text-amber-600 text-sm font-semibold text-center">
+            🚀 Free Demo — 9th Aug
+          </a>
           <a href="#enroll" onClick={() => setOpen(false)}
-            className="mt-1 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold text-center">
+            className="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold text-center">
             Get Started
           </a>
         </div>
