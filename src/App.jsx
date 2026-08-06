@@ -6,7 +6,9 @@ import Courses from './components/Courses'
 import Testimonials from './components/Testimonials'
 import Enroll from './components/Enroll'
 import Footer from './components/Footer'
+import DemoPopup from './components/DemoPopup'
 import Admin from './pages/Admin'
+import Demo from './pages/Demo'
 
 function getPath() {
   return window.location.pathname
@@ -22,6 +24,7 @@ export default function App() {
   }, [])
 
   if (path === '/admin') return <Admin />
+  if (path === '/demo') return <Demo />
 
   return (
     <>
@@ -34,6 +37,7 @@ export default function App() {
         <Enroll />
       </main>
       <Footer />
+      <DemoPopup />
     </>
   )
 }
