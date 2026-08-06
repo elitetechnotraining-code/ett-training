@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
 import Logo from '../components/Logo'
+import CountdownTimer from '../components/CountdownTimer'
+import WhatsAppButton from '../components/WhatsAppButton'
 
 const INITIAL = { name: '', email: '', phone: '', experience: '' }
 
@@ -88,6 +90,26 @@ export default function Demo() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Countdown timer */}
+          <div className="bg-white/10 rounded-2xl p-5 backdrop-blur">
+            <CountdownTimer />
+          </div>
+
+          {/* Social proof */}
+          <div className="flex items-center gap-4 bg-white/10 rounded-2xl p-4 backdrop-blur">
+            <div className="flex -space-x-2">
+              {['bg-violet-400','bg-sky-400','bg-emerald-400','bg-amber-400','bg-rose-400'].map((c,i) => (
+                <div key={i} className={`w-8 h-8 rounded-full ${c} border-2 border-brand-700 flex items-center justify-center text-white text-xs font-bold`}>
+                  {['A','R','S','M','P'][i]}
+                </div>
+              ))}
+            </div>
+            <div>
+              <p className="text-white font-semibold text-sm">120+ already registered</p>
+              <p className="text-brand-300 text-xs">Join them — seats are limited!</p>
+            </div>
           </div>
 
           {/* What you'll learn */}
@@ -198,6 +220,7 @@ export default function Demo() {
           )}
         </div>
       </main>
+      <WhatsAppButton />
     </div>
   )
 }

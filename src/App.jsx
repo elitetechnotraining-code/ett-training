@@ -7,6 +7,7 @@ import Testimonials from './components/Testimonials'
 import Enroll from './components/Enroll'
 import Footer from './components/Footer'
 import DemoPopup from './components/DemoPopup'
+import WhatsAppButton from './components/WhatsAppButton'
 import Admin from './pages/Admin'
 import Demo from './pages/Demo'
 
@@ -38,6 +39,7 @@ export default function App() {
       </main>
       <Footer />
       <DemoPopup />
+      <WhatsAppButton />
     </>
   )
 }
