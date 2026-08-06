@@ -54,7 +54,7 @@ export default function Navbar() {
           ))}
           <a href="/demo" onClick={() => setOpen(false)}
             className="mt-1 px-4 py-2 rounded-lg border border-amber-400 text-amber-600 text-sm font-semibold text-center">
-            🚀 Free Demo — 9th Aug
+            🚀 Free Demo — 15th Aug
           </a>
           <a href="#enroll" onClick={() => setOpen(false)}
             className="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold text-center">

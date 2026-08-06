@@ -39,7 +39,7 @@ export default function DemoPopup() {
         <div className="px-6 py-5 flex flex-col gap-4">
           <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: '📅', label: 'Date', value: 'Sat, 9th Aug 2026' },
+              { icon: '📅', label: 'Date', value: 'Sat, 15th Aug 2026' },
               { icon: '🕖', label: 'Time', value: '7:00 PM IST' },
               { icon: '💻', label: 'Mode', value: 'Online (Zoom)' },
               { icon: '💰', label: 'Fee', value: 'FREE' },

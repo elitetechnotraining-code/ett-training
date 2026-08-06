@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const DEMO_DATE = new Date('2026-08-09T13:30:00Z') // 7:00 PM IST = 13:30 UTC
+const DEMO_DATE = new Date('2026-08-15T13:30:00Z') // 7:00 PM IST = 13:30 UTC
 
 function pad(n) {
   return String(n).padStart(2, '0')

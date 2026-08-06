@@ -1,5 +1,5 @@
 const batches = [
-  { course: 'Full-Stack Java — Spring Boot, Angular & AI', date: 'Aug 9, 2026', time: '7:00 PM IST' },
+  { course: 'Full-Stack Java — Spring Boot, Angular & AI', date: 'Aug 15, 2026', time: '7:00 PM IST' },
 ]
 
 const scrollStyle = `
