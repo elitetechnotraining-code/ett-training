@@ -10,3 +10,9 @@ source ~/.zprofile
 # Verify
 node --version
 npm --version
+
+Go to github.com/elitetechnotraining-code
+
+
+
+Open vercel.com → click Sign Up → choose Continue with GitHub → authorize with the elitetechnotraining-code account.
