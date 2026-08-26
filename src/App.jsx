@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import BatchScroller from './components/BatchScroller'
 import Hero from './components/Hero'
+import DemoOptions from './components/DemoOptions'
 import Courses from './components/Courses'
 import Testimonials from './components/Testimonials'
 import Enroll from './components/Enroll'
+import ContactUs from './components/ContactUs'
 import Footer from './components/Footer'
-import DemoPopup from './components/DemoPopup'
 import WhatsAppButton from './components/WhatsAppButton'
 import Admin from './pages/Admin'
 import Demo from './pages/Demo'
@@ -32,13 +33,14 @@ export default function App() {
       <Navbar />
       <BatchScroller />
       <main>
+        <DemoOptions />
         <Hero />
         <Courses />
         <Testimonials />
         <Enroll />
+        <ContactUs />
       </main>
       <Footer />
-      <DemoPopup />
       <WhatsAppButton />
     </>
   )

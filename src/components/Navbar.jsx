@@ -5,6 +5,7 @@ const links = [
   { label: 'Courses', href: '#courses' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Enroll', href: '#enroll' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
@@ -25,10 +26,6 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="/demo"
-            className="ml-2 px-4 py-2 rounded-lg border border-amber-400 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors">
-            Free Demo
-          </a>
           <a href="#enroll"
             className="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors">
             Get Started
@@ -52,10 +49,6 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="/demo" onClick={() => setOpen(false)}
-            className="mt-1 px-4 py-2 rounded-lg border border-amber-400 text-amber-600 text-sm font-semibold text-center">
-            🚀 Free Demo — 15th Aug
-          </a>
           <a href="#enroll" onClick={() => setOpen(false)}
             className="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold text-center">
             Get Started

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import useDemoNotification from '../hooks/useDemoNotification'
 
 export default function DemoPopup() {
   const [visible, setVisible] = useState(false)
+  const { notification } = useDemoNotification({ activeOnly: true })
 
   useEffect(() => {
     // Show popup after 4 seconds, only once per session
@@ -15,7 +17,7 @@ export default function DemoPopup() {
     setVisible(false)
   }
 
-  if (!visible) return null
+  if (!visible || !notification.isActive) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4 pb-6 sm:pb-0">
@@ -27,22 +29,22 @@ export default function DemoPopup() {
         {/* Top banner */}
         <div className="bg-gradient-to-r from-brand-700 to-indigo-600 px-6 py-4 text-white">
           <span className="inline-block px-3 py-1 rounded-full bg-amber-400 text-gray-900 text-xs font-bold uppercase tracking-wide mb-2">
-            Free Demo Class
+            {notification.badge}
           </span>
           <h2 className="text-xl font-extrabold leading-snug">
-            Full-Stack Java + Angular + AI
+            {notification.title}
           </h2>
-          <p className="text-brand-200 text-sm mt-1">Live online session — absolutely free!</p>
+          <p className="text-brand-200 text-sm mt-1">{notification.subtitle}</p>
         </div>
 
         {/* Details */}
         <div className="px-6 py-5 flex flex-col gap-4">
           <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: '📅', label: 'Date', value: 'Sat, 15th Aug 2026' },
-              { icon: '🕖', label: 'Time', value: '7:00 PM IST' },
-              { icon: '💻', label: 'Mode', value: 'Online (Zoom)' },
-              { icon: '💰', label: 'Fee', value: 'FREE' },
+              { icon: '📅', label: 'Date', value: notification.date },
+              { icon: '🕖', label: 'Time', value: notification.time },
+              { icon: '💻', label: 'Mode', value: notification.mode },
+              { icon: '💰', label: 'Fee', value: notification.fee },
             ].map(item => (
               <div key={item.label} className="bg-gray-50 rounded-xl p-3 flex items-start gap-2">
                 <span className="text-lg">{item.icon}</span>
@@ -55,14 +57,14 @@ export default function DemoPopup() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <a href="/demo"
+            <a href={notification.primaryCtaUrl}
               onClick={dismiss}
               className="w-full py-3 rounded-xl bg-brand-600 text-white font-bold text-center text-base hover:bg-brand-700 transition-colors shadow-md">
-              🚀 Reserve My Free Seat
+              {notification.primaryCtaLabel}
             </a>
             <button onClick={dismiss}
               className="w-full py-2 text-sm text-gray-400 hover:text-gray-600 transition-colors">
-              No thanks, I'll skip this
+              {notification.secondaryCtaLabel}
             </button>
           </div>
         </div>

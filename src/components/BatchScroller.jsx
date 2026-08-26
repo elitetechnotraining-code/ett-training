@@ -1,6 +1,4 @@
-const batches = [
-  { course: 'Full-Stack Java — Spring Boot, Angular & AI', date: 'Aug 15, 2026', time: '7:00 PM IST' },
-]
+import useDemoNotification from '../hooks/useDemoNotification'
 
 const scrollStyle = `
   @keyframes marquee {
@@ -18,6 +16,22 @@ const scrollStyle = `
 `
 
 export default function BatchScroller() {
+  const { notifications } = useDemoNotification({ activeOnly: true, multiple: true })
+
+  if (!notifications.length) return null
+
+  const batches = notifications.map(item => ({
+    rawCtaUrl: item.primaryCtaUrl || '/demo',
+    id: item.id,
+    course: item.title,
+    date: item.date,
+    time: item.time,
+    mode: item.mode,
+    ctaUrl: (item.primaryCtaUrl || '/demo').startsWith('/demo') && item.id
+      ? `/demo?demo=${item.id}`
+      : (item.primaryCtaUrl || '/demo'),
+  }))
+
   const items = [...batches, ...batches, ...batches, ...batches]
 
   return (
@@ -32,27 +46,18 @@ export default function BatchScroller() {
             <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-brand-700 to-transparent z-10 pointer-events-none" />
             <div className="marquee-track">
               {items.map((b, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5 mx-6 text-xs sm:text-sm">
+                <a href={b.ctaUrl} key={`${b.id || b.course}-${i}`} className="inline-flex items-center gap-1.5 mx-6 text-xs sm:text-sm hover:opacity-90">
                   <span className="text-amber-300 font-semibold">{b.course}</span>
                   <span className="text-brand-400">|</span>
                   <span className="text-white font-medium">{b.date}</span>
                   <span className="text-brand-300">{b.time}</span>
+                  <span className="text-brand-300">{b.mode}</span>
                   <span className="text-brand-500 ml-2 text-xs">✦</span>
-                </span>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="flex-shrink-0 w-px h-4 bg-brand-500" />
-
-          {/* Enroll button */}
-          <a
-            href="#enroll"
-            className="flex-shrink-0 px-3 py-1 rounded-lg bg-amber-400 text-gray-900 text-xs font-bold uppercase tracking-wide hover:bg-amber-300 transition-colors shadow whitespace-nowrap"
-          >
-            Enroll →
-          </a>
         </div>
       </div>
     </>
