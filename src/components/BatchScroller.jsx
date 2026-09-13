@@ -37,8 +37,7 @@ export default function BatchScroller() {
   return (
     <>
       <style>{scrollStyle}</style>
-      {/* Sits in normal flow just below the fixed navbar — mt-16 pushes it below the 64px navbar */}
-      <div className="w-full bg-brand-700 text-white py-2 mt-16">
+      <div className="w-full bg-brand-700 text-white py-2">
         <div className="flex items-center gap-2 px-3 sm:px-6 sm:max-w-6xl sm:mx-auto">
 
           {/* Scrolling ticker */}

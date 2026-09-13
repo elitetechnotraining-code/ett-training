@@ -31,6 +31,7 @@ export default function App() {
   return (
     <>
       <Navbar />
+      <div className="h-16" aria-hidden="true" />
       <BatchScroller />
       <main>
         <DemoOptions />

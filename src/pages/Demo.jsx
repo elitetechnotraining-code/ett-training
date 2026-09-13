@@ -7,12 +7,45 @@ import useDemoNotification, { defaultDemoNotification } from '../hooks/useDemoNo
 
 const INITIAL = { name: '', email: '', phone: '', experience: '' }
 
+function buildDemoUrl(demoId) {
+  const origin = window.location.origin || 'https://elitetechsolutions.co.in'
+  return `${origin}/demo${demoId ? `?demo=${demoId}` : ''}`
+}
+
+function formatNotificationMessage(status) {
+  if (!status) return ''
+
+  const adminDelivered = status?.notifications?.admin?.delivered
+  const userDelivered = status?.notifications?.user?.delivered
+  const adminAttempted = status?.notifications?.admin?.attempted
+  const userAttempted = status?.notifications?.user?.attempted
+
+  if (adminDelivered && userDelivered) {
+    return 'WhatsApp confirmations were sent to both you and our team.'
+  }
+
+  if (userDelivered && !adminDelivered && adminAttempted) {
+    return 'Your WhatsApp confirmation was sent. Our team notification is pending.'
+  }
+
+  if (adminDelivered && !userDelivered && userAttempted) {
+    return 'Our team was notified on WhatsApp. Your confirmation message is pending.'
+  }
+
+  if (adminAttempted || userAttempted) {
+    return 'Your registration was saved, but WhatsApp delivery is still pending. We will follow up shortly.'
+  }
+
+  return 'Your registration was saved successfully. WhatsApp auto-confirmation is not configured yet.'
+}
+
 export default function Demo() {
   const [form, setForm] = useState(INITIAL)
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [serverError, setServerError] = useState('')
+  const [notificationStatus, setNotificationStatus] = useState(null)
   const { notifications } = useDemoNotification({ activeOnly: true, multiple: true })
   const selectedDemoId = new URLSearchParams(window.location.search).get('demo')
 
@@ -24,9 +57,10 @@ export default function Demo() {
     return notifications[0] || defaultDemoNotification
   }, [notifications, selectedDemoId])
 
+  const demoUrl = buildDemoUrl(selectedDemo.id)
   const eventLine = `${selectedDemo.date} at ${selectedDemo.time}`
-  const shareMessage = `Join me for ${selectedDemo.badge}: ${selectedDemo.title}! 🚀\n📅 ${selectedDemo.date}, ${selectedDemo.time}\n👉 Register here: https://elitetechsolutions.co.in/demo${selectedDemo.id ? `?demo=${selectedDemo.id}` : ''}`
-  const tweetMessage = `🚀 ${selectedDemo.badge}: ${selectedDemo.title}\n📅 ${selectedDemo.date}, ${selectedDemo.time}\n👉 Register here: https://elitetechsolutions.co.in/demo${selectedDemo.id ? `?demo=${selectedDemo.id}` : ''}\n#FullStackJava #Angular #AI #FreeDemoClass`
+  const shareMessage = `Join me for ${selectedDemo.badge}: ${selectedDemo.title}! 🚀\n📅 ${selectedDemo.date}, ${selectedDemo.time}\n👉 Register here: ${demoUrl}`
+  const tweetMessage = `🚀 ${selectedDemo.badge}: ${selectedDemo.title}\n📅 ${selectedDemo.date}, ${selectedDemo.time}\n👉 Register here: ${demoUrl}\n#FullStackJava #Angular #AI #FreeDemoClass`
 
   function validate() {
     const e = {}
@@ -49,6 +83,7 @@ export default function Demo() {
     if (Object.keys(e2).length) { setErrors(e2); return }
     setLoading(true)
     setServerError('')
+    setNotificationStatus(null)
     const modernPayload = {
       name: form.name.trim(),
       email: form.email.trim(),
@@ -72,9 +107,60 @@ export default function Demo() {
       error = legacyError
     }
 
-    setLoading(false)
-    if (error) { setServerError('Something went wrong. Please try again or WhatsApp us at +91 90595 71845.'); return }
+    if (error) {
+      setLoading(false)
+      setServerError('Something went wrong. Please try again or WhatsApp us at +91 90595 71845.')
+      return
+    }
+
+    try {
+      const response = await fetch('/api/demo-registration-whatsapp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          registration: {
+            name: form.name.trim(),
+            email: form.email.trim(),
+            phone: form.phone.trim(),
+            experience: form.experience,
+          },
+          demo: {
+            id: selectedDemo.id || null,
+            badge: selectedDemo.badge,
+            title: selectedDemo.title,
+            subtitle: selectedDemo.subtitle,
+            date: selectedDemo.date,
+            time: selectedDemo.time,
+            mode: selectedDemo.mode,
+            fee: selectedDemo.fee,
+            url: demoUrl,
+          },
+        }),
+      })
+
+      const payload = await response.json().catch(() => null)
+      if (!response.ok) {
+        setNotificationStatus({
+          ok: false,
+          message: payload?.error || 'Registration saved, but WhatsApp notifications could not be sent automatically.',
+          notifications: payload?.notifications,
+        })
+      } else {
+        setNotificationStatus({
+          ok: payload?.ok ?? true,
+          message: formatNotificationMessage(payload),
+          notifications: payload?.notifications,
+        })
+      }
+    } catch {
+      setNotificationStatus({
+        ok: false,
+        message: 'Registration saved, but WhatsApp notifications could not be sent automatically.',
+      })
+    }
+
     setSubmitted(true)
+    setLoading(false)
   }
 
   return (
@@ -222,6 +308,21 @@ export default function Demo() {
               <div className="w-full bg-brand-50 rounded-xl p-4 text-sm text-brand-700 font-medium text-center">
                 📅 {selectedDemo.title} - {eventLine}
               </div>
+              {notificationStatus?.message && (
+                <div className={`w-full rounded-xl p-4 text-sm text-center ${notificationStatus.ok ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>
+                  {notificationStatus.message}
+                </div>
+              )}
+              {notificationStatus?.notifications?.user && !notificationStatus.notifications.user.delivered && (
+                <a
+                  href={`https://wa.me/919059571845?text=${encodeURIComponent(`Hi, I registered for ${selectedDemo.title} on ${selectedDemo.date} at ${selectedDemo.time}. Please share the confirmation details.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-2.5 text-sm font-semibold text-green-700 hover:bg-green-100 transition-colors"
+                >
+                  Open WhatsApp fallback
+                </a>
+              )}
               <a href="/"
                 className="mt-2 px-6 py-2.5 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 transition-colors">
                 Back to Home
@@ -229,7 +330,6 @@ export default function Demo() {
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-gray-900 mb-1">Reserve Your Free Seat</h2>
               <h2 className="text-2xl font-bold text-gray-900 mb-1">Enroll for This Demo</h2>
               <p className="text-gray-500 text-sm mb-2">Limited seats available. Register now to confirm your spot.</p>
               <p className="text-sm font-semibold text-brand-700 mb-6">Selected Demo: {selectedDemo.title} - {selectedDemo.date}, {selectedDemo.time}</p>
@@ -273,7 +373,7 @@ export default function Demo() {
 
                 <button type="submit" disabled={loading}
                   className="w-full py-3 rounded-xl bg-brand-600 text-white font-bold text-base hover:bg-brand-700 transition-colors shadow-md disabled:opacity-60 disabled:cursor-not-allowed">
-                  {loading ? 'Registering…' : '🚀 Register for Free Demo'}
+                  {loading ? 'Registering…' : '🚀 Register for Demo'}
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">

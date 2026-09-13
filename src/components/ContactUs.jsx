@@ -52,7 +52,14 @@ export default function ContactUs() {
     setLoading(false)
 
     if (error) {
-      setServerError('Unable to submit now. Please try again shortly.')
+      const details = [error.message, error.details].filter(Boolean).join(' - ')
+      if (error.code === '42P01') {
+        setServerError('Unable to submit because the contact_messages table is missing. Please create it in Supabase.')
+      } else if (error.code === '42501') {
+        setServerError('Unable to submit because Supabase permissions are blocking inserts. Please check RLS/policies for contact_messages.')
+      } else {
+        setServerError(details || 'Unable to submit now. Please try again shortly.')
+      }
       return
     }
 
@@ -133,6 +140,10 @@ export default function ContactUs() {
             </div>
 
             {serverError && <p className="sm:col-span-2 text-sm text-rose-500 text-center">{serverError}</p>}
+
+            <p className="sm:col-span-2 text-xs text-gray-400 text-center">
+              If you keep seeing an error, confirm the `contact_messages` table exists and allows inserts from your Supabase app key.
+            </p>
 
             <div className="sm:col-span-2">
               <button
