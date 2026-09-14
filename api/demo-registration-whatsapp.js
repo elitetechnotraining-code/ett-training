@@ -69,6 +69,10 @@ async function sendWatiMessage({ to, body, templateName, templateParams, accessT
     if (!response.ok) {
       throw new Error(data?.errors?.[0] || data?.message || `WATI API returned ${response.status}`)
     }
+    // WATI returns HTTP 200 even on failure — check the result field
+    if (data?.result === false) {
+      throw new Error(data?.info || data?.message || 'WATI rejected the message (result: false)')
+    }
     return data
   }
 
@@ -83,6 +87,10 @@ async function sendWatiMessage({ to, body, templateName, templateParams, accessT
   const data = await response.json().catch(() => null)
   if (!response.ok) {
     throw new Error(data?.errors?.[0] || data?.message || `WATI API returned ${response.status}`)
+  }
+  // WATI returns HTTP 200 even on failure — check the result field
+  if (data?.result === false) {
+    throw new Error(data?.info || data?.message || 'WATI session message failed (result: false)')
   }
   return data
 }
